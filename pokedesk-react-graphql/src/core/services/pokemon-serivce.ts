@@ -1,8 +1,6 @@
 import { type DocumentNode } from "@apollo/client";
 import { pokeapiClient } from "../../config/pokeapi-client";
-import type { pokeAPIQueryResponse } from "../types/pokemons-types";
-
-
+import type { pokeAPIQueryResponse } from "../types/pokemons-type";
 
 // Service function to execute the query
 export const fetchPokemonList = async (

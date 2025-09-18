@@ -1,13 +1,37 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import { fetchPokemonList } from "./core/services/pokemon-serivce";
 import { gql } from "@apollo/client";
-import type { PokemonList } from "./core/types/pokemons-types";
+import type { PokemonItem } from "./core/types/pokemons-type";
+import { useSelector, useDispatch } from "react-redux";
+import { type RootState, type AppDispatch } from "./core/stores/pokemon-store";
+import {
+  setPokemonList,
+  setSpritesData,
+  setOrder_by,
+} from "./core/slices/pokemon-slice";
 
 function App() {
-  const [order_by, setOrder_by] = useState<"name" | "id">("id");
-  const [pokemonList, setPokemonList] = useState<PokemonList[]>([]);
-  const [spritesData, setSpritesData] = useState<string[]>([]);
+  // Redux state and actions
+  const order_by = useSelector((state: RootState) => state.pokemon.order_by);
+  const pokemonList = useSelector(
+    (state: RootState) => state.pokemon.pokemonList
+  );
+  const spritesData = useSelector(
+    (state: RootState) => state.pokemon.spritesData
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
+  const backgroundColor = useSelector(
+    (state: RootState) => state.pokemon.backgroundColor
+  );
+
+  const setPokemonListAction = (list: PokemonItem[]) =>
+    dispatch(setPokemonList(list));
+  const setSpritesDataAction = (data: string[]) =>
+    dispatch(setSpritesData(data));
+  const setOrder_byAction = (order: "name" | "id") =>
+    dispatch(setOrder_by(order));
 
   // GraphQL query
   const POKEMON_LIST = gql`
@@ -31,7 +55,7 @@ function App() {
     const getData = async () => {
       try {
         const data = await fetchPokemonList(POKEMON_LIST);
-        const spritesData = data.species.map((pokemon: PokemonList) => {
+        const spritesData = data.species.map((pokemon: PokemonItem) => {
           const sprites =
             pokemon.pokemons[0].pokemonsprites[0].sprites.other[
               "official-artwork"
@@ -39,8 +63,8 @@ function App() {
           return sprites;
         });
         console.log(spritesData);
-        setSpritesData(spritesData);
-        setPokemonList(data.species);
+        setSpritesDataAction(spritesData);
+        setPokemonListAction(data.species);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -50,12 +74,12 @@ function App() {
   }, [order_by]);
 
   return (
-    <>
+    <div className={backgroundColor}>
       <select
         name="order_by"
         id="order_by"
         value={order_by}
-        onChange={(e) => setOrder_by(e.target.value as "name" | "id")}
+        onChange={(e) => setOrder_byAction(e.target.value as "name" | "id")}
       >
         <option value="id">ID</option>
         <option value="name">Name</option>
@@ -68,7 +92,7 @@ function App() {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 

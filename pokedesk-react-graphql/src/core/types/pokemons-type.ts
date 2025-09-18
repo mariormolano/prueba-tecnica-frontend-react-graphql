@@ -37,12 +37,12 @@ interface Pokemons {
   pokemonsprites: PokemonSprites[];
 }
 
-export interface PokemonList {
+export interface PokemonItem {
   name: string;
   id: number;
   pokemons: Pokemons[];
 }
 
 export interface pokeAPIQueryResponse {
-  species: PokemonList[];
+  species: PokemonItem[];
 }

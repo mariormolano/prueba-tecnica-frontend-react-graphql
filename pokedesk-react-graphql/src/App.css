@@ -1,8 +1,62 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Identity */
+.bg-identity {
+  background-color: var(--identity);
+}
+
+/* Pokémon Types */
+.bg-bug {
+  background-color: var(--type-bug);
+}
+.bg-dark {
+  background-color: var(--type-dark);
+}
+.bg-dragon {
+  background-color: var(--type-dragon);
+}
+.bg-electric {
+  background-color: var(--type-electric);
+}
+.bg-fairy {
+  background-color: var(--type-fairy);
+}
+.bg-fighting {
+  background-color: var(--type-fighting);
+}
+.bg-fire {
+  background-color: var(--type-fire);
+}
+.bg-flying {
+  background-color: var(--type-flying);
+}
+.bg-ghost {
+  background-color: var(--type-ghost);
+}
+.bg-normal {
+  background-color: var(--type-normal);
+}
+.bg-grass {
+  background-color: var(--type-grass);
+}
+.bg-ground {
+  background-color: var(--type-ground);
+}
+.bg-ice {
+  background-color: var(--type-ice);
+}
+.bg-poison {
+  background-color: var(--type-poison);
+}
+.bg-psychic {
+  background-color: var(--type-psychic);
+}
+.bg-rock {
+  background-color: var(--type-rock);
+}
+.bg-steel {
+  background-color: var(--type-steel);
+}
+.bg-water {
+  background-color: var(--type-water);
 }
 
 .logo {
