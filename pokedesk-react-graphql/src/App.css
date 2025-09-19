@@ -260,11 +260,12 @@
 .item-card-container {
   display: grid;
   justify-items: center;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 3fr);
+  grid-template-rows: repeat(auto-fill, 108px);
   column-gap: 0px;
   row-gap: 8px;
   width: 352px;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 200px);
   margin-top: 12px;
   padding-top: 8px;
   background-color: var(--gray-white);
