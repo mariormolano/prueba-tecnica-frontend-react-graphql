@@ -10,6 +10,8 @@ import {
   setSpritesData,
   setOrder_by,
 } from "./core/slices/pokemon-slice";
+import searchIcon from "./assets/search.svg";
+import logo from "./assets/pokeball.svg";
 
 function App() {
   // Redux state and actions
@@ -74,24 +76,80 @@ function App() {
   }, [order_by]);
 
   return (
-    <div className={backgroundColor}>
-      <select
-        name="order_by"
-        id="order_by"
-        value={order_by}
-        onChange={(e) => setOrder_byAction(e.target.value as "name" | "id")}
-      >
-        <option value="id">ID</option>
-        <option value="name">Name</option>
-      </select>
-      <ul>
+    <div className={backgroundColor + " main-container"}>
+      <section className="order-by-full body-3">
+        <div className="order-by-container subtitle-2 ">
+          <span className="order-by-title">Sort by:</span>
+          <div className="order-by-selector body-3">
+            <label htmlFor="order-id" onClick={() => setOrder_byAction("id")}>
+              <input
+                type="radio"
+                onSelect={() => setOrder_byAction("id")}
+                value="id"
+                checked={order_by === "id"}
+              />
+              <span>Number</span>
+            </label>
+            <label
+              htmlFor="order-name"
+              onClick={() => setOrder_byAction("name")}
+            >
+              <input
+                type="radio"
+                onSelect={() => setOrder_byAction("name")}
+                value="name"
+                checked={order_by === "name"}
+              />
+              <span>Name</span>
+            </label>
+          </div>
+        </div>
+      </section>
+      <div className="title-bar-container">
+        <img src={logo} alt="Logo" className="app-logo" />
+        <span className="headline">Pokédex</span>
+      </div>
+      <section className="search-bar-container">
+        <div className="search-bar-base">
+          <img
+            src={searchIcon}
+            alt="Search"
+            className="search-bar-icon"
+            onClick={() => document.getElementById("search")?.focus()}
+          />
+          <input
+            type="text"
+            name="search"
+            id="search"
+            placeholder="Search"
+            className="search-bar-input body-3"
+          />
+        </div>
+        <div className="sort_by-container">
+          {order_by === "id" ? (
+            <span>#</span>
+          ) : (
+            <span className="sort_by-underline">A</span>
+          )}
+        </div>
+      </section>
+      <div className="item-card-container">
         {pokemonList.map((pokemon) => (
-          <li key={pokemon.id}>
-            {pokemon.id} - {pokemon.name} <br />
-            <img src={spritesData[pokemon.id]} alt={pokemon.name} />
-          </li>
+          <div key={pokemon.id} className="item-card">
+            <section className="item-id caption">
+              {String(pokemon.id).replace(/\d+/, (match) => {
+                return "#" + match.padStart(3, "0");
+              })}
+            </section>
+            <img
+              src={spritesData[pokemon.id - 1]}
+              className="item-img"
+              alt={pokemon.name}
+            />
+            <section className="item-name body-3">{pokemon.name}</section>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

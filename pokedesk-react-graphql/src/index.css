@@ -1,76 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 :root {
   /* Identity */
-  --identity: #DC0A2D;
+  --identity: #dc0a2d;
 
   /* Pokémon Types */
-  --type-bug: #A7B723;
-  --type-dark: #75574C;
-  --type-dragon: #7037FF;
-  --type-electric: #F9CF30;
-  --type-fairy: #E69EAC;
-  --type-fighting: #C12239;
-  --type-fire: #F57D31;
-  --type-flying: #A891EC;
-  --type-ghost: #70559B;
-  --type-normal: #AAA67F;
-  --type-grass: #74CB48;
-  --type-ground: #DEC16B;
-  --type-ice: #9AD6DF;
-  --type-poison: #A43E9E;
-  --type-psychic: #FB5584;
-  --type-rock: #B69E31;
-  --type-steel: #B7B9D0;
-  --type-water: #6493EB;
+  --type-bug: #a7b723;
+  --type-dark: #75574c;
+  --type-dragon: #7037ff;
+  --type-electric: #f9cf30;
+  --type-fairy: #e69eac;
+  --type-fighting: #c12239;
+  --type-fire: #f57d31;
+  --type-flying: #a891ec;
+  --type-ghost: #70559b;
+  --type-normal: #aaa67f;
+  --type-grass: #74cb48;
+  --type-ground: #dec16b;
+  --type-ice: #9ad6df;
+  --type-poison: #a43e9e;
+  --type-psychic: #fb5584;
+  --type-rock: #b69e31;
+  --type-steel: #b7b9d0;
+  --type-water: #6493eb;
 
   /* Grayscale */
   --gray-dark: #212121;
   --gray-medium: #666666;
-  --gray-light: #E0E0E0;
-  --gray-background: #EFEFEF;
-  --gray-white: #FFFFFF;
+  --gray-light: #e0e0e0;
+  --gray-background: #efefef;
+  --gray-white: #ffffff;
 }
 
+/* Grayscale */
+.bg-gray-dark {
+  background-color: var(--gray-dark);
+}
+.bg-gray-medium {
+  background-color: var(--gray-medium);
+}
+.bg-gray-light {
+  background-color: var(--gray-light);
+}
+.bg-gray-background {
+  background-color: var(--gray-background);
+}
+.bg-gray-white {
+  background-color: var(--gray-white);
+}
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+/* Header Typography  */
+
+.headline {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700; /* Bold */
+}
+
+.subtitle-1 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 700; /* Bold */
+}
+
+.subtitle-2 {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700; /* Bold */
+}
+
+.subtitle-3 {
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 700; /* Bold */
+}
+
+/* Body Typography    */
+
+.body-1 {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400; /* Regular */
+}
+
+.body-2 {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400; /* Regular */
+}
+
+.body-3 {
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 400; /* Regular */
+}
+
+.caption {
+  font-size: 8px;
+  line-height: 12px;
+  font-weight: 400; /* Regular */
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-    display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-    line-height: 1;
+  line-height: 1;
+  font-family: "Poppins", sans-serif;
+  width: 100vw;
+  height: 100vh;
 }
-ol, ul {
-    list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-    quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }

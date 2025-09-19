@@ -59,17 +59,198 @@
   background-color: var(--type-water);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.order-by-full {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  z-index: 99;
+  background: rgba(255, 255, 255, 0.507);
+  backdrop-filter: blur(4px);
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    input[type="radio"] {
+      margin: 0;
+      accent-color: red;
+    }
+  }
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.order-by-container {
+  width: 113px;
+  height: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--gray-white);
+  background-color: var(--identity);
+  border-radius: 12px;
+}
+
+.order-by-title {
+  width: 105px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-by-selector {
+  background-color: var(--gray-white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  color: var(--gray-dark);
+  width: 105px;
+  height: 80px;
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  gap: 16px;
+}
+
+.title-bar-container {
+  width: 328px;
+  height: 32px;
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  color: var(--gray-white);
+  gap: 16px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.search-bar-container {
+  width: 328px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.search-bar-base {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-bar-icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  left: 10px;
+  z-index: 1;
+}
+.search-bar-input {
+  position: relative;
+  left: -15px;
+  width: 280px;
+  height: 32px;
+  background-color: var(--gray-white);
+  border: none;
+  border-radius: 16px;
+  box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.25);
+  padding-left: 30px;
+  box-sizing: border-box;
+  color: var(--gray-dark);
+  &:focus {
+    outline: none;
+  }
+}
+
+.sort_by-container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--identity);
+  background-color: var(--gray-white);
+  border-radius: 16px;
+  box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.sort_by-underline {
+  text-decoration: underline;
+}
+
+.item-card-container {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 0px;
+  row-gap: 8px;
+  width: 352px;
+  height: calc(100vh - 130px);
+  margin-top: 12px;
+  padding-top: 8px;
+  background-color: var(--gray-white);
+  border-radius: 8px;
+  box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.25);
+  overflow-x: scroll;
+}
+
+.item-card {
+  background-color: var(--gray-white);
+  width: 104px;
+  height: 108px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  .item-img {
+    position: absolute;
+    width: auto;
+    height: 72px;
+    object-fit: contain;
+  }
+  .item-id {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 64px;
+    margin-top: 4px;
+    margin-right: 8px;
+  }
+
+  .item-name {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 44px;
+    background: var(--gray-background);
+    border-radius: 7px;
+  }
 }
 
 @keyframes logo-spin {
