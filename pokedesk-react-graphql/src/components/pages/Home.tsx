@@ -15,6 +15,7 @@ import {
 import {
   setPokemonList,
   setSpritesData,
+  setSearch,
 } from "../../core/slices/pokemon-slice";
 
 interface HomeProps {
@@ -31,22 +32,29 @@ const Home = ({ orderByModalOpen, setOrderByModalOpen }: HomeProps) => {
   const spritesData = useSelector(
     (state: RootState) => state.pokemon.spritesData
   );
+  const search = useSelector((state: RootState) => state.pokemon.search);
   const dispatch = useDispatch<AppDispatch>();
 
   const setPokemonListAction = (list: PokemonItem[]) =>
     dispatch(setPokemonList(list));
   const setSpritesDataAction = (data: SpriteData[]) =>
     dispatch(setSpritesData(data));
-
   const setOrder_byAction = (order: "name" | "id") =>
     dispatch(setOrder_by(order));
-  
+  const setSearchAction = (search: string) => dispatch(setSearch(search));
+
+  const searchWhere = `where: {_and: [
+      {id: {_lt: 1000}}
+      {name: {_ilike: "%${search}%" } }
+      ]}`;
+
+  const noSearch = `where: {id: {_lt: 1000}}`;
 
   // GraphQL query
   const POKEMON_LIST = gql`
-    query samplePokeAPIquery {
+    query PokemonList {
       species: pokemonspecies(
-        where: {id: {_lt: 1000}}
+        ${search ? searchWhere : noSearch}
         order_by: { ${order_by}: asc }
       ) {
         name
@@ -78,7 +86,7 @@ const Home = ({ orderByModalOpen, setOrderByModalOpen }: HomeProps) => {
 
     getData();
     setOrderByModalOpen(false);
-  }, [order_by]);
+  }, [order_by, search]);
 
   return (
     <>
@@ -93,6 +101,8 @@ const Home = ({ orderByModalOpen, setOrderByModalOpen }: HomeProps) => {
       <SearchBar
         order_by={order_by}
         setOrderByModalOpen={setOrderByModalOpen}
+        setSearchAction={setSearchAction}
+        search={search}
       />
       <ItemCardList pokemonList={pokemonList} spritesData={spritesData} />
     </>

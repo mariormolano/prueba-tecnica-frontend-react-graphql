@@ -51,3 +51,61 @@ export interface SpriteData {
 export interface fetchPokemonListResponse {
   species: PokemonItem[];
 }
+
+export interface pokemonPreviewDataResponse {
+  pokemon: PokemonData[];
+}
+
+export interface PokemonData {
+  name: string;
+  id: number;
+  pokemontypes: Pokemontype[];
+  weight: number;
+  height: number;
+  pokemonmoves: Pokemonmoves[]
+  pokemonabilities: Pokemonability[];
+  pokemonstats: Pokemonstat[];
+  pokemonspecy: Pokemonspecy;
+}
+
+export interface Pokemontype {
+  type: Type;
+}
+
+export interface Type {
+  name: string;
+}
+
+export interface Pokemonmoves {
+  move: Move
+}
+
+export interface Move {
+  name: string
+  power: number
+  id: number
+}
+export interface Pokemonability {
+  ability: Ability;
+}
+
+export interface Ability {
+  name: string;
+}
+
+export interface Pokemonstat {
+  base_stat: number;
+  stat: Stat;
+}
+
+export interface Stat {
+  name: string;
+}
+
+export interface Pokemonspecy {
+  pokemonspeciesflavortexts: Pokemonspeciesflavortext[];
+}
+
+export interface Pokemonspeciesflavortext {
+  flavor_text: string;
+}

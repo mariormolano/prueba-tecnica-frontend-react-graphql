@@ -1,11 +1,16 @@
 import SearchIcon from "../atoms/searchIcon";
 import SearchInput from "../atoms/searchInput";
 
-const SearchBase = () => {
+interface SearchBaseProps {
+  setSearchAction: (search: string) => void;
+  search: string;
+}
+
+const SearchBase = ({ setSearchAction, search }: SearchBaseProps) => {
   return (
     <div className="search-bar-base">
       <SearchIcon />
-      <SearchInput />
+      <SearchInput setSearchAction={setSearchAction} search={search} />
     </div>
   );
 };

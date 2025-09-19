@@ -1,10 +1,11 @@
 interface ItemIDProps {
   id: number;
+  className?: string;
 }
 
-const ItemID = ({ id }: ItemIDProps) => {
+const ItemID = ({ id, className }: ItemIDProps) => {
   return (
-    <section className="item-id caption">
+    <section className={`item-id ${className ? className : "caption"}`}>
       {String(id).replace(/\d+/, (match) => {
         return "#" + match.padStart(3, "0");
       })}

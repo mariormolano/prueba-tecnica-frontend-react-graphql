@@ -10,7 +10,7 @@ const ItemCardList = ({ pokemonList, spritesData }: ItemCardListProps) => {
   return (
     <div className="item-card-container">
       {pokemonList.map((pokemon) => (
-        <ItemCard pokemon={pokemon} spritesData={spritesData} />
+        <ItemCard pokemon={pokemon} spritesData={spritesData} key={pokemon.id} />
       ))}
     </div>
   );

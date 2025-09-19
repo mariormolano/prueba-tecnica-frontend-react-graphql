@@ -1,6 +1,9 @@
 import { type DocumentNode } from "@apollo/client";
 import { pokeapiClient } from "../../config/pokeapi-client";
-import type { fetchPokemonListResponse } from "../types/pokemons-type";
+import type {
+  fetchPokemonListResponse,
+  pokemonPreviewDataResponse,
+} from "../types/pokemons-type";
 
 // Service function to execute the query
 export const fetchPokemonList = async (
@@ -22,9 +25,9 @@ export const fetchPokemonList = async (
 
 export const pokemonPreviewData = async (
   query: DocumentNode
-): Promise<fetchPokemonListResponse> => {
+): Promise<pokemonPreviewDataResponse> => {
   try {
-    const { data } = await pokeapiClient.query<fetchPokemonListResponse>({
+    const { data } = await pokeapiClient.query<pokemonPreviewDataResponse>({
       query: query,
     });
     if (!data) {
