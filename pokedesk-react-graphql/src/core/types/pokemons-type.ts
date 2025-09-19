@@ -43,6 +43,11 @@ export interface PokemonItem {
   pokemons: Pokemons[];
 }
 
-export interface pokeAPIQueryResponse {
+export interface SpriteData {
+  url: string | null;
+  id: number;
+}
+
+export interface fetchPokemonListResponse {
   species: PokemonItem[];
 }

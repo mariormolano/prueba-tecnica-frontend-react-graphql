@@ -1,18 +1,18 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { PokemonItem } from "../types/pokemons-type";
+import type { PokemonItem, SpriteData } from "../types/pokemons-type";
 import type { PokemonBgClass } from "../types/background-type";
 
 interface PokemonState {
   pokemonList: PokemonItem[];
-  actualPokemon?: PokemonItem;
-  spritesData: string[];
+  actualPokemon: PokemonItem | null;
+  spritesData: SpriteData[];
   backgroundColor: string;
   order_by: "name" | "id";
 }
 
 const initialState: PokemonState = {
   pokemonList: [],
-  actualPokemon: undefined,
+  actualPokemon: null,
   spritesData: [],
   backgroundColor: "bg-identity",
   order_by: "id",
@@ -25,13 +25,13 @@ const pokemonSlice = createSlice({
     setPokemonList: (state, action: PayloadAction<PokemonItem[]>) => {
       state.pokemonList = action.payload;
     },
-    setSpritesData: (state, action: PayloadAction<string[]>) => {
+    setSpritesData: (state, action: PayloadAction<SpriteData[]>) => {
       state.spritesData = action.payload;
     },
     setBackgroundColor: (state, action: PayloadAction<PokemonBgClass>) => {
       state.backgroundColor = String(action.payload);
     },
-    setActualPokemon: (state, action: PayloadAction<PokemonItem>) => {
+    setActualPokemon: (state, action: PayloadAction<PokemonItem | null>) => {
       state.actualPokemon = action.payload;
     },
     setOrder_by: (state, action: PayloadAction<"name" | "id">) => {
